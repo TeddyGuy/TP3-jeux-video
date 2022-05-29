@@ -34,6 +34,11 @@ public class TimerController : MonoBehaviour
         timerDisplay.GetComponent<UnityEngine.UI.Text>().text = time;
     }
 
+    public void endTimer()
+    {
+        running = false;
+    }
+
     public void ResetTimer()
     {
         timer = 0;

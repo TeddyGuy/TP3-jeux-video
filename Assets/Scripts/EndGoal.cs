@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EndGoal : MonoBehaviour
 {
-    public TimerController timerController;
-    public GameObject restartBtn;
-    public MouseLook mouseLook;
+    public UnityEvent endReachedEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +22,7 @@ public class EndGoal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            timerController.running = false;
-            restartBtn.SetActive(true);
-            mouseLook.UnLockCursor();
-            mouseLook.enabled = false;
+            endReachedEvent.Invoke();
         }
     }
 }
