@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RespawnController : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class RespawnController : MonoBehaviour
             other.gameObject.transform.position = new Vector3(lastCheckpoint.x, lastCheckpoint.y + 5, lastCheckpoint.z);
             controller.enabled = true;
         }
+    }
+
+    public void changeCheckpoint(Vector3 position)
+    {
+        lastCheckpoint = position;
     }
 
     public void Reset()
