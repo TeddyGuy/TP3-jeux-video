@@ -25,13 +25,17 @@ public class TimerController : MonoBehaviour
         if (running)
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
         }
         float seconds = Mathf.FloorToInt(timer % 60);
         float minutes = Mathf.FloorToInt(timer / 60);
         string time = minutes + ":" + seconds;
 
         timerDisplay.GetComponent<UnityEngine.UI.Text>().text = time;
+    }
+
+    public void endTimer()
+    {
+        running = false;
     }
 
     public void ResetTimer()
