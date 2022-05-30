@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public CharacterController controller;
+    public Animator animator;
 
     public float gravity = -9.81f;
     public bool applyGravity = true;
@@ -20,9 +20,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         float x = (xAxisMouvementAllowed ? Input.GetAxis("Horizontal") : 0);
         float z = (zAxisMouvementAllowed ? Input.GetAxis("Vertical") : 0);
+
+        if (Input.GetKey(KeyCode.W) && zAxisMouvementAllowed && controller.isGrounded)
+        {
+            animator.SetBool("Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
 
         mouvementDirection = (transform.right * x) + (transform.forward * z);
 
