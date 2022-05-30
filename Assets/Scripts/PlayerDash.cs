@@ -7,6 +7,7 @@ public class PlayerDash : MonoBehaviour
 {
     Player player;
     public Slider cooldownSlider;
+    public AudioSource audioSource;
 
     public float dashForce = 100f;
     public float dashTime = 0.25f;
@@ -15,6 +16,7 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player>();
+        audioSource = player.GetComponent<AudioSource>();
         dashCoolDown = dashCoolDownMax;
         cooldownSlider.maxValue = dashCoolDownMax;
         cooldownSlider.minValue = 0f;
@@ -29,6 +31,7 @@ public class PlayerDash : MonoBehaviour
             if (DashIsReady())
             {
                 dashCoolDown = 0f;
+                audioSource.Play();
                 StartCoroutine(Dash());
             }
         }
