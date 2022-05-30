@@ -7,10 +7,12 @@ public class RespawnController : MonoBehaviour
 {
     public Vector3 lastCheckpoint = new Vector3(0,5,0);
     public CharacterController controller;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         lastCheckpoint = new Vector3(0, 5, 0);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class RespawnController : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             Debug.Log("test respawn");
+            audioSource.Play();
             controller.enabled = false;
             other.gameObject.transform.position = new Vector3(lastCheckpoint.x, lastCheckpoint.y + 5, lastCheckpoint.z);
             controller.enabled = true;

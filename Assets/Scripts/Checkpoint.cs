@@ -12,12 +12,14 @@ public class CheckpointChangedEvent : UnityEvent<Vector3>
 public class Checkpoint : MonoBehaviour
 {
     public RespawnController respawnController;
+    public AudioSource audioSource;
     public CheckpointChangedEvent checkpointChangedEvent;
+    private bool firstTime = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -32,7 +34,11 @@ public class Checkpoint : MonoBehaviour
         
         if (other.tag.Equals("Player"))
         {
-            Debug.Log("test");
+            if (firstTime)
+            {
+                audioSource.Play();
+                firstTime = false;
+            }
             checkpointChangedEvent?.Invoke(this.gameObject.transform.position);
         }
     }
