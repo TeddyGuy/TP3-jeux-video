@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerJump : MonoBehaviour
 {
     Player player;
+    public Animator animator;
     public Slider powerSlider;
 
     public float jumpForceMax = 60f;
@@ -33,15 +34,25 @@ public class PlayerJump : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 ChargeJump();
+                if (!animator.GetBool("ChargingJump")) {
+                    animator.SetBool("ChargingJump", true);
+                }
+                
             }
             else
             {
                 if (AutoJump) {
                     Jump();
+                    animator.SetBool("ChargingJump", false);
+                    animator.SetBool("Jump", true);
                 } 
                 else if (jumpForceBuiltUp > 0f) {
+                    
                     Jump();
+                    animator.SetBool("ChargingJump", false);
+                    animator.SetBool("Jump", true);
                 }
+                
             }
         }
     }
