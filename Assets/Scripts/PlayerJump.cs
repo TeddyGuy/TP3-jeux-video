@@ -43,12 +43,16 @@ public class PlayerJump : MonoBehaviour
             {
                 if (AutoJump) {
                     Jump();
-                } 
-                else if (jumpForceBuiltUp > 0f) {
                     animator.SetBool("ChargingJump", false);
                     animator.SetBool("Jump", true);
+                } 
+                else if (jumpForceBuiltUp > 0f) {
+                    
                     Jump();
+                    animator.SetBool("ChargingJump", false);
+                    animator.SetBool("Jump", true);
                 }
+                
             }
         }
     }

@@ -4600,6 +4600,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6877209797507458486, guid: 85517085caf16814091a8532e556a1a6, type: 3}
+      propertyPath: AutoJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6877209797507458486, guid: 85517085caf16814091a8532e556a1a6, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 763518358}
